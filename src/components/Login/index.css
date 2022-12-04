@@ -5,6 +5,8 @@
     height: 50vh;
     background-color: white;
     justify-content: space-around;
+    box-shadow: 8px 8px 19px 2px darkslategrey;
+    border-radius: 5px;
 }
 
 .avatar-container {
@@ -39,16 +41,24 @@
 }
 
 .input-text-box {
+    width: 50vw;
     border: none;
+    border-bottom: 1px solid gray;
     flex-basis: 75%;
+    text-align: center;
+}
+
+.input-text-box-invalid,  .input-text-box-invalid:focus{
+    width: 50vw;
+    border: none;
+    border-bottom: 1px solid rgb(106, 14, 14);
+    flex-basis: 75%;
+    text-align: center;
 }
 
 .input-text-box:focus {
     border: none;
-}
-
-input[type=text]:focus {
-    border:none !important;
+    border-bottom: 1px solid #5AB9C1 !important ;
 }
 
 .login-button {
