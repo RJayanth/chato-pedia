@@ -1,4 +1,4 @@
-import { AVATAR_CLICK, LOGIN_BUTTON_STATE_CHANGE, USER_NAME_TYPED } from "../actionTypes";
+import { AVATAR_CLICK, ENABLE_LOGIN_BUTTON, SHOW_INVALID_ALERT, USER_NAME_TYPED } from "../actionTypes";
 import initialState from "../state/initialState";
 
 const loginReducer = (state = initialState, action) => {
@@ -13,13 +13,19 @@ const loginReducer = (state = initialState, action) => {
       console.log('username typed in reducer');
       return {
         ...state,
-        login: { ...state.login, userName: action.payload.userName }
+        login: { ...state.login, userName: action.payload.userName, showAlert: false }
       };
 
-    case LOGIN_BUTTON_STATE_CHANGE:
+    case ENABLE_LOGIN_BUTTON:
       return {
         ...state,
-        login: { ...state.login, isLoginEnabled: action.payload.isLoginEnabled }
+        login: { ...state.login, isLoginEnabled: action.payload }
+      }
+
+    case SHOW_INVALID_ALERT:
+      return {
+        ...state,
+        login: { ...state.login, showAlert: action.payload }
       }
     default:
       return state;

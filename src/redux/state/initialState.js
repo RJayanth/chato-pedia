@@ -2,7 +2,8 @@ const initialState = {
     login: {
         userAvatar: '',
         userName: '',
-        isLoginEnabled: false
+        isLoginEnabled: false,
+        showAlert: false,
     }
 };
 

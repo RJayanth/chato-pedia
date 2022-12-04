@@ -9,20 +9,38 @@ import a8 from '../../images/avatar/a8.png';
 import a9 from '../../images/avatar/a9.png';
 
 import './index.css';
-import { useDispatch } from 'react-redux';
-import { USER_NAME_TYPED } from '../../redux/actionTypes';
+import { useDispatch, useSelector } from 'react-redux';
+import { ENABLE_LOGIN_BUTTON, SHOW_INVALID_ALERT, USER_NAME_TYPED } from '../../redux/actionTypes';
+import { debounce } from '../../helpers';
 
 const Login = () => {
+
+    const { login } = useSelector(state => state.loginReducer);
+    const { userName, userAvatar, isLoginEnabled } = login;
 
     const dispatch = useDispatch();
 
     const handleUserNameChange = (event) => {
         console.log('username change ', event.target.value);
-        dispatch({
-            type: USER_NAME_TYPED,
-            payload: { userName: event.target.value }
-        })
+        const userName = event.target.value;
+        if (userName.length > 5) {
+            dispatch({
+                type: USER_NAME_TYPED,
+                payload: { userName: event.target.value }
+            })
+            dispatch({
+                type: ENABLE_LOGIN_BUTTON,
+                payload: true
+            })
+        } else {
+            dispatch({
+                type: SHOW_INVALID_ALERT,
+                payload: true
+            })
+        }
     }
+    const onChange = debounce((event) => handleUserNameChange(event), 500);
+
     return (
         <div className="login-container">
 
@@ -42,8 +60,8 @@ const Login = () => {
             </div>
 
             <div className="login-form-container">
-                <input type="text" className="input-text-box" placeholder="Your name here..." onChange={handleUserNameChange}></input>
-                <button className="login-button">Proceed</button>
+                <input type="text" className="input-text-box" placeholder="Your name here..." onChange={onChange}></input>
+                <button className="login-button" disabled={!isLoginEnabled}>Proceed</button>
             </div>
 
         </div>

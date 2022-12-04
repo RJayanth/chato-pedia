@@ -2,7 +2,8 @@ const clearState = {
     login: {
         userAvatar: '',
         userName: '',
-        isLoginEnabled: false
+        isLoginEnabled: false,
+        showAlert: false,
     }
 };
 
