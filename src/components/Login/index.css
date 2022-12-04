@@ -1,86 +1,87 @@
 .login-container {
-    margin: 50px;
-    display: flex;
-    flex-direction: column;
-    height: 50vh;
-    background-color: white;
-    justify-content: space-around;
-    box-shadow: 8px 8px 19px 2px darkslategrey;
-    border-radius: 5px;
+  margin: 50px;
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+  background-color: white;
+  justify-content: space-around;
+  box-shadow: 8px 8px 19px 2px darkslategrey;
+  border-radius: 5px;
 }
 
 .avatar-section-container {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    margin-bottom: 3vh;
-    align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-bottom: 3vh;
+  align-items: center;
 }
 
-.avatar{
-    width: 60px;
-    height: 50px;    
+.avatar {
+  width: 60px;
+  height: 50px;
 }
 
 .avatar-icons-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .avatar-icon-selected {
-    border: 1px solid #5AB9C1;
+  border: 1px solid #5ab9c1;
 }
 
-.avatar-icons-container>div {
-    margin: 5px;
-    cursor: pointer;
+.avatar-icons-container > div {
+  margin: 5px;
+  cursor: pointer;
 }
 
 .avatar-label {
-    margin-top: 3vh;
-    background-color: #5AB9C1 !important;
-    border-radius: 3px;
-    width: 50vw;
+  margin-top: 3vh;
+  background-color: #5ab9c1 !important;
+  border-radius: 3px;
+  width: 50vw;
 }
 
 .input-text-box-container {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
 }
 
 .input-text-box {
-    width: 50vw;
-    border: none;
-    border-bottom: 1px solid gray;
-    flex-basis: 75%;
-    text-align: center;
+  width: 50vw;
+  border: none;
+  border-bottom: 1px solid gray;
+  flex-basis: 75%;
+  text-align: center;
 }
 
-.input-text-box-invalid,  .input-text-box-invalid:focus{
-    width: 50vw;
-    border: none;
-    border-bottom: 1px solid rgb(106, 14, 14);
-    flex-basis: 75%;
-    text-align: center;
+.input-text-box-invalid,
+.input-text-box-invalid:focus {
+  width: 50vw;
+  border: none;
+  border-bottom: 1px solid rgb(106, 14, 14);
+  flex-basis: 75%;
+  text-align: center;
 }
 
 .input-text-box:focus {
-    border: none;
-    border-bottom: 1px solid #5AB9C1 !important ;
+  border: none;
+  border-bottom: 1px solid #5ab9c1 !important ;
 }
 
 .login-button {
-    background-color: #5AB9C1;
-    border-radius: 3px;
-    border-color: #5b989d8c;
-    cursor: pointer;
+  background-color: #5ab9c1;
+  border-radius: 3px;
+  border-color: #5b989d8c;
+  cursor: pointer;
 }
 
 .login-button-disabled {
-    background-color: #959797;
-    border-radius: 3px;
-    border-color: #5b989d8c;
-    cursor: pointer;
+  background-color: #959797;
+  border-radius: 3px;
+  border-color: #5b989d8c;
+  cursor: pointer;
 }

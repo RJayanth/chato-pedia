@@ -4,8 +4,8 @@ import {
   SAVE_AVATAR_COLLECTION,
   SHOW_INVALID_ALERT,
   USER_NAME_TYPED,
-} from "../actionTypes";
-import initialState from "../state/initialState";
+} from '../actionTypes';
+import initialState from '../state/initialState';
 
 const loginReducer = (state = initialState, action) => {
   switch (action.type) {

@@ -7,11 +7,11 @@ import Login from './components/Login';
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <Header />
       <Login />
       <Main />
-      <Footer />      
+      <Footer />
     </div>
   );
 }

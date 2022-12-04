@@ -4,7 +4,7 @@ const initialState = {
       avatarCollection: [],
       selectedAvatarID: 0,
     },
-    userName: "",
+    userName: '',
     isLoginEnabled: false,
     showAlert: false,
   },

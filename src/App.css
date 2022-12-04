@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: #B7E1E4;
+  background-color: #b7e1e4;
   height: 100vh;
 }
 
@@ -15,7 +15,9 @@
   }
 }
 
-input:focus, textarea:focus, select:focus{
+input:focus,
+textarea:focus,
+select:focus {
   outline: none;
 }
 

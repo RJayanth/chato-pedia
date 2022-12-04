@@ -1,25 +1,25 @@
-import a1 from "../../images/avatar/a1.png";
-import a2 from "../../images/avatar/a2.png";
-import a3 from "../../images/avatar/a3.png";
-import a4 from "../../images/avatar/a4.png";
-import a5 from "../../images/avatar/a5.png";
-import a6 from "../../images/avatar/a6.png";
-import a7 from "../../images/avatar/a7.png";
-import a8 from "../../images/avatar/a8.png";
-import a9 from "../../images/avatar/a9.png";
+import a1 from '../../images/avatar/a1.png';
+import a2 from '../../images/avatar/a2.png';
+import a3 from '../../images/avatar/a3.png';
+import a4 from '../../images/avatar/a4.png';
+import a5 from '../../images/avatar/a5.png';
+import a6 from '../../images/avatar/a6.png';
+import a7 from '../../images/avatar/a7.png';
+import a8 from '../../images/avatar/a8.png';
+import a9 from '../../images/avatar/a9.png';
 
-import "./index.css";
-import { useDispatch, useSelector } from "react-redux";
+import './index.css';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   AVATAR_CLICK,
   ENABLE_LOGIN_BUTTON,
   SAVE_AVATAR_COLLECTION,
   SHOW_INVALID_ALERT,
   USER_NAME_TYPED,
-} from "../../redux/actionTypes";
-import { debounce } from "../../helpers";
-import CustomizedSnackbars from "../../commons/snackbar";
-import { useEffect } from "react";
+} from '../../redux/actionTypes';
+import { debounce } from '../../helpers';
+import CustomizedSnackbars from '../../commons/snackbar';
+import { useEffect } from 'react';
 
 const Login = () => {
   const { login } = useSelector((state) => state.loginReducer);
@@ -36,7 +36,7 @@ const Login = () => {
   }, []);
 
   const handleUserNameChange = (event) => {
-    console.log("username change ", event.target.value);
+    console.log('username change ', event.target.value);
     const userName = event.target.value.trim();
     if (userName.length > 5) {
       dispatch({
@@ -61,7 +61,7 @@ const Login = () => {
   const onChange = debounce((event) => handleUserNameChange(event), 300);
 
   const avatarSelectionHandler = (event) => {
-    console.log("Avatar selected ", event);
+    console.log('Avatar selected ', event);
     dispatch({
       type: AVATAR_CLICK,
       payload: parseInt(event.target.id),
@@ -69,20 +69,20 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <div className="avatar-section-container">
-        <div className="avatar-icons-container">
+    <div className='login-container'>
+      <div className='avatar-section-container'>
+        <div className='avatar-icons-container'>
           {avatarCollection.map((item, idx) => {
             return (
               <div
                 className={`avatar-icon ${
-                  idx === avatar.selectedAvatarID ? "avatar-icon-selected" : ""
+                  idx === avatar.selectedAvatarID ? 'avatar-icon-selected' : ''
                 }`}
                 key={idx}
               >
                 <img
                   src={item}
-                  className="avatar"
+                  className='avatar'
                   key={idx}
                   onClick={avatarSelectionHandler}
                   id={idx}
@@ -100,21 +100,21 @@ const Login = () => {
                     <img src={a8} className="avatar"></img>
                     <img src={a9} className="avatar"></img> */}
         </div>
-        <div className="avatar-label">Choose your avatar...</div>
+        <div className='avatar-label'>Choose your avatar...</div>
       </div>
 
-      <div className="login-form-container">
+      <div className='login-form-container'>
         <input
-          type="text"
+          type='text'
           className={`${
-            showAlert ? "input-text-box-invalid" : "input-text-box"
+            showAlert ? 'input-text-box-invalid' : 'input-text-box'
           }`}
-          placeholder="Your name here..."
+          placeholder='Your name here...'
           onChange={onChange}
         ></input>
         <button
           className={`${
-            isLoginEnabled ? "login-button" : "login-button-disabled"
+            isLoginEnabled ? 'login-button' : 'login-button-disabled'
           }`}
           disabled={!isLoginEnabled}
         >
@@ -125,8 +125,8 @@ const Login = () => {
       {showAlert ? (
         <CustomizedSnackbars
           autoHideDuration={3000}
-          message={"Username is minimum 6 characters length"}
-          severity={"error"}
+          message={'Username is minimum 6 characters length'}
+          severity={'error'}
         />
       ) : (
         <></>
