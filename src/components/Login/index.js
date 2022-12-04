@@ -12,17 +12,18 @@ import './index.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { ENABLE_LOGIN_BUTTON, SHOW_INVALID_ALERT, USER_NAME_TYPED } from '../../redux/actionTypes';
 import { debounce } from '../../helpers';
+import CustomizedSnackbars from '../../commons/snackbar';
 
 const Login = () => {
 
     const { login } = useSelector(state => state.loginReducer);
-    const { userName, userAvatar, isLoginEnabled } = login;
+    const { userName, userAvatar, isLoginEnabled, showAlert } = login;
 
     const dispatch = useDispatch();
 
     const handleUserNameChange = (event) => {
         console.log('username change ', event.target.value);
-        const userName = event.target.value;
+        const userName = event.target.value.trim();
         if (userName.length > 5) {
             dispatch({
                 type: USER_NAME_TYPED,
@@ -37,13 +38,16 @@ const Login = () => {
                 type: SHOW_INVALID_ALERT,
                 payload: true
             })
+            dispatch({
+                type: ENABLE_LOGIN_BUTTON,
+                payload: false
+            })
         }
     }
-    const onChange = debounce((event) => handleUserNameChange(event), 500);
+    const onChange = debounce((event) => handleUserNameChange(event), 300);
 
     return (
         <div className="login-container">
-
             <div className="avatar-container">
                 <div className="avatar-icons">
                     <img src={a1} className="avatar"></img>
@@ -60,9 +64,11 @@ const Login = () => {
             </div>
 
             <div className="login-form-container">
-                <input type="text" className="input-text-box" placeholder="Your name here..." onChange={onChange}></input>
+                <input type="text" className={`${showAlert ? 'input-text-box-invalid' : 'input-text-box'}`} placeholder="Your name here..." onChange={onChange}></input>
                 <button className="login-button" disabled={!isLoginEnabled}>Proceed</button>
             </div>
+
+            {showAlert ? <CustomizedSnackbars autoHideDuration={3000} message={'Username is minimum 6 characters length'} severity={'error'} /> : <></>}
 
         </div>
     )
