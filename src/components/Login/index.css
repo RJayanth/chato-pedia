@@ -44,6 +44,11 @@
   width: 50vw;
 }
 
+.login-form-container {
+  display: flex;
+  justify-content: center;
+}
+
 .input-text-box-container {
   display: flex;
   justify-content: space-around;
@@ -54,7 +59,7 @@
   width: 50vw;
   border: none;
   border-bottom: 1px solid gray;
-  flex-basis: 75%;
+  /* flex-basis: 75%; */
   text-align: center;
 }
 
@@ -63,7 +68,7 @@
   width: 50vw;
   border: none;
   border-bottom: 1px solid rgb(106, 14, 14);
-  flex-basis: 75%;
+  /* flex-basis: 75%; */
   text-align: center;
 }
 
