@@ -57,10 +57,10 @@
 
 .page-not-found-header-text {
   font-size: 150%;
-  font-family: monospace;
+  /* font-family: monospace; */
   color: white;
   background-color: teal;
-  padding: 3%;
+  /* padding: 3%; */
   margin: 1%;
   border-radius: 10px;
   box-shadow: 6px 5px 11px 0px black;
@@ -72,4 +72,8 @@
   border-radius: 3px;
   margin: 1%;
   font-size: 100%;
+}
+
+.page-not-found-home-icon {
+  cursor: pointer;
 }
