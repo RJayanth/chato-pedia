@@ -14,9 +14,9 @@ const Chatbox = () => {
                 Chatbox Body
             </div>
             <div className="chatbox-footer-container">
+                <UsersHub />
                 <MyChats />
                 <Filters />
-                <UsersHub />
             </div>
         </div>
     )
