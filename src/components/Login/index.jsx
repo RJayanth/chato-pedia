@@ -20,8 +20,10 @@ import {
 import { debounce } from '../../helpers';
 import CustomizedSnackbars from '../../commons/snackbar';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const navigate = useNavigate();
   const { login } = useSelector((state) => state.loginReducer);
   const { userName, isLoginEnabled, showAlert, avatar } = login;
   const avatarCollection = [a1, a2, a3, a4, a5, a6, a7, a8, a9];
@@ -34,6 +36,10 @@ const Login = () => {
       payload: avatarCollection,
     });
   }, []);
+
+  const loginClickHandler = () => {
+    navigate('chatbox');
+  }
 
   const handleUserNameChange = (event) => {
     console.log('username change ', event.target.value);
@@ -90,15 +96,6 @@ const Login = () => {
               </div>
             );
           })}
-          {/* <img src={a1} className="avatar"></img>
-                    <img src={a2} className="avatar"></img>
-                    <img src={a3} className="avatar"></img>
-                    <img src={a4} className="avatar"></img>
-                    <img src={a5} className="avatar"></img>
-                    <img src={a6} className="avatar"></img>
-                    <img src={a7} className="avatar"></img>
-                    <img src={a8} className="avatar"></img>
-                    <img src={a9} className="avatar"></img> */}
         </div>
         <div className='avatar-label'>Choose your avatar...</div>
       </div>
@@ -117,6 +114,7 @@ const Login = () => {
             isLoginEnabled ? 'login-button' : 'login-button-disabled'
           }`}
           disabled={!isLoginEnabled}
+          onClick={loginClickHandler}
         >
           Proceed
         </button>
