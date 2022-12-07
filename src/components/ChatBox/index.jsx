@@ -5,8 +5,15 @@ import { CHAT_BOX } from '../../constants';
 import UsersHub from './UsersHub';
 import MyChats from './MyChats';
 import Filters from './Filters';
+import socketIO from 'socket.io-client';
+import { useEffect } from 'react';
 
 const Chatbox = () => {
+    
+    useEffect( () => {
+        console.log('Chatbox is called');
+        const socket = socketIO.connect('http://localhost:4000');
+    }, [])
     const { chatBox } = useSelector(state => state.chatBoxReducer);
     const { selectedView } = chatBox;
     return (
