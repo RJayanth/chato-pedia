@@ -11,8 +11,8 @@ const initialState = {
     showAlert: false,
   },
   chatBox: {
-    myChats: {},
     usersHub: {},
+    myChats: {},
     filters: {},
     selectedView: CHAT_BOX.USERS_HUB,
   },

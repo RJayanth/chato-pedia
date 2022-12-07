@@ -1,9 +1,15 @@
 import ChatTwoToneIcon from '@mui/icons-material/ChatTwoTone';
+import { useDispatch, useSelector } from 'react-redux';
+import { CHAT_BOX } from '../../../constants';
+import { CHAT_BOX_MY_CHATS_CLICK } from '../../../redux/actionTypes';
 
 const MyChats = () => {
+  const { chatBox } = useSelector((state) => state.chatBoxReducer);
+  const { selectedView } = chatBox;
+  const dispatch = useDispatch();
   return (
     <div>
-      <ChatTwoToneIcon fontSize='large' />
+      My Chats Section
     </div>
   );
 };

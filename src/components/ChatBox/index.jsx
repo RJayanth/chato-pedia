@@ -1,22 +1,25 @@
-import MyChats from './MyChats';
 import './index.css';
-import Filters from './Filters';
+import { useSelector } from 'react-redux';
+import Toolbar from './Toolbar';
+import { CHAT_BOX } from '../../constants';
 import UsersHub from './UsersHub';
+import MyChats from './MyChats';
+import Filters from './Filters';
 
 const Chatbox = () => {
+    const { chatBox } = useSelector(state => state.chatBoxReducer);
+    const { selectedView } = chatBox;
     return (
         // <div className="chatbox-container d-flex">
         <div className="chatbox-container d-flex d-md-none">
             <div className="chatbox-header">
-                Chatbox Header
+                {selectedView}
             </div>
             <div className="chatbox-body">
-                Chatbox Body
+                {selectedView === CHAT_BOX.USERS_HUB ? <UsersHub /> : selectedView === CHAT_BOX.MY_CHATS ? <MyChats /> : <Filters />}
             </div>
             <div className="chatbox-footer-container">
-                <UsersHub />
-                <MyChats />
-                <Filters />
+                <Toolbar />
             </div>
         </div>
     )

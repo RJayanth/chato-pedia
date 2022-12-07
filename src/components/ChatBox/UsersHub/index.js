@@ -1,11 +1,16 @@
 import Groups2TwoToneIcon from '@mui/icons-material/Groups2TwoTone';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { CHAT_BOX } from '../../../constants';
+import { CHAT_BOX_USERS_HUB_CLICK } from '../../../redux/actionTypes';
 
 const UsersHub = () => {
-  const { chatBox } = useSelector(state => state.chatBoxReducer);
+  const { chatBox } = useSelector((state) => state.chatBoxReducer);
+  const { selectedView } = chatBox;
+  const dispatch = useDispatch();
+
   return (
     <div>
-      <Groups2TwoToneIcon fontSize='large' color='secondary'/>
+      Users Hub Section
     </div>
   );
 };
