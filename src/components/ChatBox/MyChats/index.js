@@ -4,7 +4,7 @@ import { CHAT_BOX } from '../../../constants';
 import { CHAT_BOX_MY_CHATS_CLICK } from '../../../redux/actionTypes';
 
 const MyChats = () => {
-  const { chatBox } = useSelector((state) => state.chatBoxReducer);
+  const { chatBox } = useSelector((state) => state);
   const { selectedView } = chatBox;
   const dispatch = useDispatch();
   return (

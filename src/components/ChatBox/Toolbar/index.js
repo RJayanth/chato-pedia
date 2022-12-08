@@ -10,7 +10,7 @@ import {
 } from '../../../redux/actionTypes';
 
 const Toolbar = () => {
-  const { chatBox } = useSelector((state) => state.chatBoxReducer);
+  const { chatBox } = useSelector((state) => state);
   const { selectedView } = chatBox;
   const dispatch = useDispatch();
   const usersHubClickHandler = () => {

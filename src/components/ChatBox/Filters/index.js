@@ -3,7 +3,7 @@ import { CHAT_BOX } from '../../../constants';
 import { CHAT_BOX_FILTERS_CLICK } from '../../../redux/actionTypes';
 
 const Filters = () => {
-  const { chatBox } = useSelector((state) => state.chatBoxReducer);
+  const { chatBox } = useSelector((state) => state);
   const { selectedView } = chatBox;
   const dispatch = useDispatch();
   return (
