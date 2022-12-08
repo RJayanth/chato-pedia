@@ -1,0 +1,11 @@
+.users-hub-container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+.user-container {
+    display: flex;
+    padding: 5px;
+    border-bottom: 1px solid gainsboro;
+}

@@ -16,7 +16,7 @@
 .chatbox-body {
     flex-basis: 100%;
     /* border-bottom: 1px solid gray; */
-    background-color: #e5ffff;
+    background-color: white;
 }
 
 .chatbox-footer-container {

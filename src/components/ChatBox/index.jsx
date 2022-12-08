@@ -12,6 +12,7 @@ import {
   CHAT_BOX_LOGGED_IN_USER_DETAILS_UPDATE,
   CHAT_BOX_NEW_USER_ADDED,
   CHAT_BOX_USERS_LIST_UPDATE,
+  CHAT_BOX_USER_REMOVE,
 } from '../../redux/actionTypes';
 import { useState } from 'react';
 
@@ -95,6 +96,13 @@ const Chatbox = () => {
         payload: data,
       });
     });
+
+    socket.on('user disconnected', data => {
+      dispatch({
+        type: CHAT_BOX_USER_REMOVE,
+        payload: data
+      })
+    })
   }, []);
 
   return (
