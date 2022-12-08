@@ -19,7 +19,7 @@ const Chatbox = () => {
   const dispatch = useDispatch();
   const { chatBox } = useSelector((state) => state);
   const { selectedView } = chatBox;
-  const { login } = useSelector((state) => state.loginReducer);
+  const { login } = useSelector((state) => state);
   const { userName, avatar, gender } = login;
   const { selectedAvatarID } = avatar;
   const [finishStatus, setfinishStatus] = useState(false);

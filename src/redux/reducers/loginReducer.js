@@ -7,50 +7,41 @@ import {
 } from '../actionTypes';
 import initialState from '../state/initialState';
 
-const loginReducer = (state = initialState, action) => {
+const loginReducer = (state = initialState.login, action) => {
   switch (action.type) {
     case AVATAR_CLICK:
       return {
         ...state,
-        login: {
-          ...state.login,
-          avatar: {
-            ...state.login.avatar,
-            selectedAvatarID: action.payload.id,
-          },
-          gender: action.payload.gender,
+        avatar: {
+          ...state.avatar,
+          selectedAvatarID: action.payload.id,
         },
+        gender: action.payload.gender,
       };
 
     case USER_NAME_TYPED:
       return {
         ...state,
-        login: {
-          ...state.login,
-          userName: action.payload.userName,
-          showAlert: false,
-        },
+        userName: action.payload.userName,
+        showAlert: false,
       };
 
     case ENABLE_LOGIN_BUTTON:
       return {
         ...state,
-        login: { ...state.login, isLoginEnabled: action.payload },
+        isLoginEnabled: action.payload,
       };
 
     case SHOW_INVALID_ALERT:
       return {
         ...state,
-        login: { ...state.login, showAlert: action.payload },
+        showAlert: action.payload,
       };
 
     case SAVE_AVATAR_COLLECTION:
       return {
         ...state,
-        login: {
-          ...state.login,
-          avatar: { ...state.login.avatar, avatarCollection: action.payload },
-        },
+        avatar: { ...state.avatar, avatarCollection: action.payload },
       };
 
     default:

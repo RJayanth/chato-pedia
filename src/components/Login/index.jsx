@@ -24,7 +24,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const navigate = useNavigate();
-  const { login } = useSelector((state) => state.loginReducer);
+  const { login } = useSelector((state) => state);
   const { userName, isLoginEnabled, showAlert, avatar } = login;
   const avatarCollection = [a1, a2, a3, a4, a5, a6, a7, a8, a9];
 
