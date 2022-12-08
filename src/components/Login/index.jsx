@@ -39,7 +39,7 @@ const Login = () => {
 
   const loginClickHandler = () => {
     navigate('chatbox');
-  }
+  };
 
   const handleUserNameChange = (event) => {
     console.log('username change ', event.target.value);
@@ -68,9 +68,42 @@ const Login = () => {
 
   const avatarSelectionHandler = (event) => {
     console.log('Avatar selected ', event);
+    let gender = '';
+    switch (event.target.id) {
+      case '0':
+        gender = 'male';
+        break;
+      case '1':
+        gender = 'female';
+        break;
+      case '2':
+        gender = 'female';
+        break;
+      case '3':
+        gender = 'male';
+        break;
+      case '4':
+        gender = 'female';
+        break;
+      case '5':
+        gender = 'male';
+        break;
+      case '6':
+        gender = 'male';
+        break;
+      case '7':
+        gender = 'male';
+        break;
+      case '8':
+        gender = 'fmale';
+        break;
+      default:
+        gender = 'male';
+        break;
+    }
     dispatch({
       type: AVATAR_CLICK,
-      payload: parseInt(event.target.id),
+      payload: { id: parseInt(event.target.id), gender },
     });
   };
 

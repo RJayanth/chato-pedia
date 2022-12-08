@@ -6,6 +6,7 @@ const initialState = {
       avatarCollection: [],
       selectedAvatarID: 0,
     },
+    gender:'male',
     userName: '',
     isLoginEnabled: false,
     showAlert: false,

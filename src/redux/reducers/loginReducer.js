@@ -14,7 +14,11 @@ const loginReducer = (state = initialState, action) => {
         ...state,
         login: {
           ...state.login,
-          avatar: { ...state.login.avatar, selectedAvatarID: action.payload },
+          avatar: {
+            ...state.login.avatar,
+            selectedAvatarID: action.payload.id,
+          },
+          gender: action.payload.gender,
         },
       };
 
