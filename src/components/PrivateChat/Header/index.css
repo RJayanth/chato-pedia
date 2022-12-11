@@ -1,0 +1,14 @@
+.private-chat-header-container {
+    display: flex;
+    flex-basis: 10%;
+    border-bottom: 1px solid gray;
+    align-items: center;
+}
+
+.private-chat-header-left-section {
+    flex-basis: 5%;
+}
+
+.private-chat-header-text {
+    flex-basis: 90%;
+}

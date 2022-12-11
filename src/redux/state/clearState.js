@@ -17,7 +17,8 @@ const clearState = {
     filters: {},
     selectedView: CHAT_BOX.USERS_HUB,
     loggedInUserDetails: {},
-    usersList: []
+    usersList: [],
+    selectedUser: {}
   },
 };
 
