@@ -15,11 +15,15 @@ import {
   CHAT_BOX_USER_REMOVE,
 } from '../../redux/actionTypes';
 import { useState } from 'react';
+import UsersHubHeader from './UsersHub/Header';
+import PrivateChat from '../PrivateChat';
+import PrivateChatHeader from '../PrivateChat/Header';
 
 const Chatbox = () => {
   const dispatch = useDispatch();
-  const { chatBox } = useSelector((state) => state);
-  const { selectedView } = chatBox;
+  const {
+    chatBox: { selectedView, selectedUser },
+  } = useSelector((state) => state);
   const { login } = useSelector((state) => state);
   const { userName, avatar, gender } = login;
   const { selectedAvatarID } = avatar;
@@ -90,27 +94,35 @@ const Chatbox = () => {
     });
 
     socket.on('new user', (data) => {
-      alert('new user connected - ', data);
       dispatch({
         type: CHAT_BOX_NEW_USER_ADDED,
         payload: data,
       });
     });
 
-    socket.on('user disconnected', data => {
+    socket.on('user disconnected', (data) => {
       dispatch({
         type: CHAT_BOX_USER_REMOVE,
-        payload: data
-      })
-    })
+        payload: data,
+      });
+    });
   }, []);
 
   return (
     // <div className="chatbox-container d-flex">
     <div className="chatbox-container d-flex d-md-none">
-      <div className="chatbox-header">{selectedView}</div>
+      {selectedView === CHAT_BOX.PRIVATE_CHAT ? (
+        <PrivateChatHeader />
+      ) : (
+        <div className="chatbox-header">
+          <div className="chatbox-header-text">{selectedView}</div>
+          {/* {selectedView === CHAT_BOX.USERS_HUB && <UsersHubHeader />} */}
+        </div>
+      )}
       <div className="chatbox-body">
-        {selectedView === CHAT_BOX.USERS_HUB ? (
+        {selectedView === CHAT_BOX.PRIVATE_CHAT ? (
+          <PrivateChat />
+        ) : selectedView === CHAT_BOX.USERS_HUB ? (
           <UsersHub />
         ) : selectedView === CHAT_BOX.MY_CHATS ? (
           <MyChats />

@@ -6,17 +6,25 @@
     /* border: 1px solid; */
     border-radius: 10px;
     box-shadow: 4px 1px 20px 0px #6f6666;
+    background-color: white;
 }
 
 .chatbox-header {
+    display: flex;
     flex-basis: 10%;
     border-bottom: 1px solid gray;
+    align-items: center;
+    justify-content: center;
 }
+
+/* .chatbox-header-text {
+    flex-grow: 1;
+} */
 
 .chatbox-body {
     flex-basis: 100%;
+    overflow-y: auto;
     /* border-bottom: 1px solid gray; */
-    background-color: white;
 }
 
 .chatbox-footer-container {

@@ -8,4 +8,11 @@
     display: flex;
     padding: 5px;
     border-bottom: 1px solid gainsboro;
+    justify-content: space-between;
+}
+.user-row-left-panel {
+    display: flex;
+}
+.user-hub-details-container {
+    margin-left: 5px;
 }

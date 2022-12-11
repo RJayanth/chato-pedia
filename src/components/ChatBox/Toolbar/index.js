@@ -8,10 +8,12 @@ import {
   CHAT_BOX_MY_CHATS_CLICK,
   CHAT_BOX_FILTERS_CLICK,
 } from '../../../redux/actionTypes';
+import { Badge } from '@mui/material';
 
 const Toolbar = () => {
-  const { chatBox } = useSelector((state) => state);
-  const { selectedView } = chatBox;
+  const {
+    chatBox: { usersList, selectedView },
+  } = useSelector((state) => state);
   const dispatch = useDispatch();
   const usersHubClickHandler = () => {
     if (selectedView !== CHAT_BOX.USERS_HUB) {
@@ -43,22 +45,29 @@ const Toolbar = () => {
   return (
     <>
       <div>
-        <Groups2TwoToneIcon
+        {/* <Groups2TwoToneIcon
           fontSize='large'
           color={`${selectedView === CHAT_BOX.USERS_HUB ? 'primary' : ''}`}
           onClick={usersHubClickHandler}
-        />
+        /> */}
+        <Badge color="secondary" badgeContent={usersList.length}>
+          <Groups2TwoToneIcon
+            fontSize="large"
+            color={`${selectedView === CHAT_BOX.USERS_HUB ? 'primary' : ''}`}
+            onClick={usersHubClickHandler}
+          />
+        </Badge>
       </div>
       <div>
         <ChatTwoToneIcon
-          fontSize='large'
+          fontSize="large"
           onClick={myChatsClickHandler}
           color={`${selectedView === CHAT_BOX.MY_CHATS ? 'primary' : ''}`}
         />
       </div>
       <div>
         <FilterAltTwoToneIcon
-          fontSize='large'
+          fontSize="large"
           onClick={filtesClickHandler}
           color={`${selectedView === CHAT_BOX.FILTERS ? 'primary' : ''}`}
         />
