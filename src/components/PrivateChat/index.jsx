@@ -1,11 +1,16 @@
 import { useSelector } from "react-redux";
+import PrivateChatBody from "./Body";
+import PrivateChatFooter from "./Footer";
+import PrivateChatHeader from "./Header";
 
 const PrivateChat = () => {
     const {chatBox: {selectedUser }} = useSelector(state=> state);
     return(
-        <div className="private-chat-container">
-            Private Chat
-        </div>
+        <>
+            <PrivateChatHeader />
+            <PrivateChatBody />
+            <PrivateChatFooter />
+        </>
     )
 }
 

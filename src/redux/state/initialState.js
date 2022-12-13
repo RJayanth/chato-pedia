@@ -15,6 +15,7 @@ const initialState = {
     usersHub: {},
     myChats: {},
     filters: {},
+    previousSelectedView: null,
     selectedView: CHAT_BOX.USERS_HUB,
     loggedInUserDetails: {},
     usersList: [],

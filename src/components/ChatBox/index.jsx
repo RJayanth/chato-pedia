@@ -112,27 +112,27 @@ const Chatbox = () => {
     // <div className="chatbox-container d-flex">
     <div className="chatbox-container d-flex d-md-none">
       {selectedView === CHAT_BOX.PRIVATE_CHAT ? (
-        <PrivateChatHeader />
+        <PrivateChat />
       ) : (
-        <div className="chatbox-header">
-          <div className="chatbox-header-text">{selectedView}</div>
-          {/* {selectedView === CHAT_BOX.USERS_HUB && <UsersHubHeader />} */}
-        </div>
+        <>
+          <div className="chatbox-header">
+            <div className="chatbox-header-text">{selectedView}</div>
+            {/* {selectedView === CHAT_BOX.USERS_HUB && <UsersHubHeader />} */}
+          </div>
+          <div className="chatbox-body">
+            {selectedView === CHAT_BOX.USERS_HUB ? (
+              <UsersHub />
+            ) : selectedView === CHAT_BOX.MY_CHATS ? (
+              <MyChats />
+            ) : (
+              <Filters />
+            )}
+          </div>
+          <div className="chatbox-footer-container">
+            <Toolbar />
+          </div>{' '}
+        </>
       )}
-      <div className="chatbox-body">
-        {selectedView === CHAT_BOX.PRIVATE_CHAT ? (
-          <PrivateChat />
-        ) : selectedView === CHAT_BOX.USERS_HUB ? (
-          <UsersHub />
-        ) : selectedView === CHAT_BOX.MY_CHATS ? (
-          <MyChats />
-        ) : (
-          <Filters />
-        )}
-      </div>
-      <div className="chatbox-footer-container">
-        <Toolbar />
-      </div>
     </div>
   );
 };

@@ -4,6 +4,7 @@ import {
   CHAT_BOX_LOGGED_IN_USER_DETAILS_UPDATE,
   CHAT_BOX_MY_CHATS_CLICK,
   CHAT_BOX_NEW_USER_ADDED,
+  CHAT_BOX_SELECTED_VIEW_CHANGE,
   CHAT_BOX_USERS_HUB_CLICK,
   CHAT_BOX_USERS_LIST_UPDATE,
   CHAT_BOX_USER_REMOVE,
@@ -13,22 +14,11 @@ import initialState from '../state/initialState';
 
 const chatBoxReducer = (state = initialState.chatBox, action) => {
   switch (action.type) {
-    case CHAT_BOX_USERS_HUB_CLICK:
+    case CHAT_BOX_SELECTED_VIEW_CHANGE:
       return {
         ...state,
         selectedView: action.payload,
       };
-    case CHAT_BOX_MY_CHATS_CLICK:
-      return {
-        ...state,
-        selectedView: action.payload,
-      };
-    case CHAT_BOX_FILTERS_CLICK:
-      return {
-        ...state,
-        selectedView: action.payload,
-      };
-
     case CHAT_BOX_LOGGED_IN_USER_DETAILS_UPDATE:
       return {
         ...state,
@@ -62,6 +52,7 @@ const chatBoxReducer = (state = initialState.chatBox, action) => {
       return {
         ...state,
         selectedUser: action.payload,
+        previousSelectedView: state.selectedView,
         selectedView: CHAT_BOX.PRIVATE_CHAT // render private message view on user row selection
       };
     default:

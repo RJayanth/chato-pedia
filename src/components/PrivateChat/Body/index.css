@@ -1,0 +1,4 @@
+.private-chat-box-body-container {
+  flex-basis: 100%;
+  overflow-y: auto;
+}

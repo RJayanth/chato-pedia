@@ -7,6 +7,7 @@ import {
   CHAT_BOX_USERS_HUB_CLICK,
   CHAT_BOX_MY_CHATS_CLICK,
   CHAT_BOX_FILTERS_CLICK,
+  CHAT_BOX_SELECTED_VIEW_CHANGE,
 } from '../../../redux/actionTypes';
 import { Badge } from '@mui/material';
 
@@ -18,7 +19,7 @@ const Toolbar = () => {
   const usersHubClickHandler = () => {
     if (selectedView !== CHAT_BOX.USERS_HUB) {
       dispatch({
-        type: CHAT_BOX_USERS_HUB_CLICK,
+        type: CHAT_BOX_SELECTED_VIEW_CHANGE,
         payload: CHAT_BOX.USERS_HUB,
       });
     }
@@ -27,7 +28,7 @@ const Toolbar = () => {
   const myChatsClickHandler = () => {
     if (selectedView !== CHAT_BOX.MY_CHATS) {
       dispatch({
-        type: CHAT_BOX_MY_CHATS_CLICK,
+        type: CHAT_BOX_SELECTED_VIEW_CHANGE,
         payload: CHAT_BOX.MY_CHATS,
       });
     }
@@ -36,7 +37,7 @@ const Toolbar = () => {
   const filtesClickHandler = () => {
     if (selectedView !== CHAT_BOX.FILTERS) {
       dispatch({
-        type: CHAT_BOX_FILTERS_CLICK,
+        type: CHAT_BOX_SELECTED_VIEW_CHANGE,
         payload: CHAT_BOX.FILTERS,
       });
     }
