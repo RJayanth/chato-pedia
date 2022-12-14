@@ -1,23 +1,29 @@
 .private-chat-box-footer-container {
+  display: flex;
+  flex-direction: column;
+  box-shadow: -2px -3px 20px 0px #8080804f;
+}
+
+.private-chat-box-footer-send-message-section {
   flex-basis: 10%;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
   background-color: white;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  box-shadow: -2px -3px 20px 0px;
-}
-
-.private-chat-box-footer-content {
-  margin: 5px;
-  border: 1px solid gainsboro;
-  border-radius: 20px;
-  width: 100%;
+  /* box-shadow: -2px -3px 20px 0px; */
+  justify-content: space-evenly;
   padding: 5px;
 }
 
 .private-chat-box-message-box {
-  border: none;
-  width: 100%;
+  width: 90%;
+  border: 1px solid gainsboro;
+  border-radius: 20px;
+  padding: 5px;
+  padding-left: 10px;
 }
+
+/* .private-chat-box-send-button {
+  margin-left: 5px;
+} */

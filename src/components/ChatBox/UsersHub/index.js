@@ -40,7 +40,7 @@ const UsersHub = () => {
                 className="avatar"
                 id={user.id}
               /> */}
-              <BadgedAvatar imageSrc={avatarCollection[user.selectedAvatarID]}/>
+              <BadgedAvatar imageSrc={avatarCollection[user.selectedAvatarID]} variant='dot'/>
               <div className="user-hub-details-container">{user.userName} {isLoggedInUser && '(You)'}</div>
             </div>
             <div>

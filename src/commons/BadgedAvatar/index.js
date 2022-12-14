@@ -39,13 +39,13 @@ const SmallAvatar = styled(Avatar)(({ theme }) => ({
   border: `2px solid ${theme.palette.background.paper}`,
 }));
 
-const BadgedAvatar = ({imageSrc}) => {
+const BadgedAvatar = ({imageSrc, variant}) => {
   return (
     <Stack direction="row" spacing={2}>
       <StyledBadge
         overlap="circular"
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-        variant="dot"
+        variant={variant}
       >
         <Avatar alt="Remy Sharp" src={imageSrc} />
       </StyledBadge>
