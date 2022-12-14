@@ -22,7 +22,7 @@ import PrivateChatHeader from '../PrivateChat/Header';
 const Chatbox = () => {
   const dispatch = useDispatch();
   const {
-    chatBox: { selectedView, selectedUser },
+    chatBox: { selectedView, selectedUser, isKeyboardActive },
   } = useSelector((state) => state);
   const { login } = useSelector((state) => state);
   const { userName, avatar, gender } = login;
@@ -110,7 +110,7 @@ const Chatbox = () => {
 
   return (
     // <div className="chatbox-container d-flex">
-    <div className="chatbox-container d-flex d-md-none">
+    <div className={`${isKeyboardActive ? 'chatbox-container-reduced' : 'chatbox-container'} 'd-flex d-md-none'`}>
       {selectedView === CHAT_BOX.PRIVATE_CHAT ? (
         <PrivateChat />
       ) : (

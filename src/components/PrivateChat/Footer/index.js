@@ -1,7 +1,13 @@
+import { useDispatch } from 'react-redux';
 import './index.css';
 
 const PrivateChatFooter = () => {
+  const dispatch = useDispatch();
   const onInputClick = () => {
+    // dispatch({
+    //   type: 'KEYBOARD_ACTIVE_REDUCE_CHAT_BOX',
+    //   payload: true
+    // })
   };
 
   return (

@@ -19,7 +19,8 @@ const clearState = {
     selectedView: CHAT_BOX.USERS_HUB,
     loggedInUserDetails: {},
     usersList: [],
-    selectedUser: {}
+    selectedUser: {},
+    isKeyboardActive: false,
   },
 };
 

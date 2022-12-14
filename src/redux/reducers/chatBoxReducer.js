@@ -9,6 +9,7 @@ import {
   CHAT_BOX_USERS_LIST_UPDATE,
   CHAT_BOX_USER_REMOVE,
   CHAT_BOX_USER_ROW_SELECT,
+  KEYBOARD_ACTIVE_REDUCE_CHAT_BOX,
 } from '../actionTypes';
 import initialState from '../state/initialState';
 
@@ -53,7 +54,13 @@ const chatBoxReducer = (state = initialState.chatBox, action) => {
         ...state,
         selectedUser: action.payload,
         previousSelectedView: state.selectedView,
-        selectedView: CHAT_BOX.PRIVATE_CHAT // render private message view on user row selection
+        selectedView: CHAT_BOX.PRIVATE_CHAT, // render private message view on user row selection
+      };
+
+    case KEYBOARD_ACTIVE_REDUCE_CHAT_BOX:
+      return {
+        ...state,
+        isKeyboardActive: action.payload,
       };
     default:
       return state;
