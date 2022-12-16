@@ -7,10 +7,14 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import dotsLoadingColorful from '../../../images/dotsLoadingColorful.gif';
 import dotsLoading from '../../../images/dotsLoading.gif';
+import {
+  CHAT_BOX_SEND_PRIVATE_MESSAGE,
+  CHAT_BOX_USER_TYPING,
+} from '../../../redux/actionTypes';
 
 const PrivateChatFooter = () => {
   const {
-    chatBox: { selectedUser },
+    chatBox: { selectedUser, currentlyTypedMessage },
   } = useSelector((state) => state);
   const [isTyping, setIsTyping] = useState(false);
   const dispatch = useDispatch();
@@ -21,9 +25,13 @@ const PrivateChatFooter = () => {
     //   payload: true
     // })
   };
-  const onTyping = () => {
+  const onTyping = (event) => {
     // notify the other socket in private chatbox
     console.log('im typing', selectedUser.id);
+    dispatch({
+      type: CHAT_BOX_USER_TYPING,
+      payload: event.target.value,
+    });
     socket.emit('typing', { sendToId: selectedUser.id });
   };
 
@@ -49,7 +57,22 @@ const PrivateChatFooter = () => {
     });
   }, []);
 
-  const onChange = debounce((event) => onTyping(event), 300);
+  const onChange = debounce((event) => onTyping(event), 500);
+
+  const onSendClick = () => {
+    if (currentlyTypedMessage.trim().length) {
+      const messageObj = {
+        content: currentlyTypedMessage,
+        sender: 'self',
+      };
+      dispatch({
+        type: CHAT_BOX_SEND_PRIVATE_MESSAGE,
+        payload: { messageObj, key: selectedUser.id }, // key is recieving client id
+      });
+
+      socket.emit('private message', { content: messageObj.content, sendToId: selectedUser.id });
+    }
+  };
 
   return (
     <div className="private-chat-box-footer-container">
@@ -73,7 +96,7 @@ const PrivateChatFooter = () => {
           onChange={onChange}
         />
         <div className="private-chat-box-send-button">
-          <SendOutlinedIcon color="primary" disabled />
+          <SendOutlinedIcon color="primary" disabled onClick={onSendClick} />
         </div>
       </div>
     </div>

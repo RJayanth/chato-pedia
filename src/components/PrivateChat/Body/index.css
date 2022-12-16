@@ -1,4 +1,34 @@
 .private-chat-box-body-container {
   flex-basis: 100%;
   overflow-y: auto;
+  padding: 5px;
+  /* display: flex;
+  flex-direction: column; */
+}
+
+.self-message-pill {
+  text-align: left;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 50%;
+  /* right: 0; */
+  margin-left: auto;
+  background-color: #c2d4d4;
+  margin-bottom: 5px;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.client-message-pill {
+  text-align: left;
+  /* text-align: end; */
+  width: fit-content;
+  max-width: 50%;
+  /* right: 0; */
+  /* margin-left: auto; */
+  background-color: #327676;
+  margin-bottom: 5px;
+  padding: 5px;
+  border-radius: 10px;
+  color: white;
 }

@@ -21,6 +21,7 @@ const initialState = {
     usersList: [],
     selectedUser: {},
     isKeyboardActive: false,
+    currentlyTypedMessage: ''
   },
 };
 

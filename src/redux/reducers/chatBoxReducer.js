@@ -5,10 +5,12 @@ import {
   CHAT_BOX_MY_CHATS_CLICK,
   CHAT_BOX_NEW_USER_ADDED,
   CHAT_BOX_SELECTED_VIEW_CHANGE,
+  CHAT_BOX_SEND_PRIVATE_MESSAGE,
   CHAT_BOX_USERS_HUB_CLICK,
   CHAT_BOX_USERS_LIST_UPDATE,
   CHAT_BOX_USER_REMOVE,
   CHAT_BOX_USER_ROW_SELECT,
+  CHAT_BOX_USER_TYPING,
   KEYBOARD_ACTIVE_REDUCE_CHAT_BOX,
 } from '../actionTypes';
 import initialState from '../state/initialState';
@@ -61,6 +63,22 @@ const chatBoxReducer = (state = initialState.chatBox, action) => {
       return {
         ...state,
         isKeyboardActive: action.payload,
+      };
+
+    case CHAT_BOX_USER_TYPING:
+      return {
+        ...state,
+        currentlyTypedMessage: action.payload,
+      };
+
+    case CHAT_BOX_SEND_PRIVATE_MESSAGE:
+      if (!state.myChats[action.payload.key]) {
+        state.myChats[action.payload.key] = [];
+      }
+      state.myChats[action.payload.key].push(action.payload.messageObj);
+      return { 
+        ...state,
+        currentlyTypedMessage: ''
       };
     default:
       return state;
