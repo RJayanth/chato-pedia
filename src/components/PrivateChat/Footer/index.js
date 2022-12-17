@@ -55,6 +55,8 @@ const PrivateChatFooter = () => {
       }
       // debounce(setIsTyping(false), 300);
     });
+
+    return () => socket.removeListener('user typing');
   }, []);
 
   const onChange = debounce((event) => onTyping(event), 500);

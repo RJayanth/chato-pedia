@@ -11,6 +11,7 @@ import socket from '../../socket';
 import {
   CHAT_BOX_LOGGED_IN_USER_DETAILS_UPDATE,
   CHAT_BOX_NEW_USER_ADDED,
+  CHAT_BOX_SEND_PRIVATE_MESSAGE,
   CHAT_BOX_USERS_LIST_UPDATE,
   CHAT_BOX_USER_REMOVE,
 } from '../../redux/actionTypes';
@@ -106,6 +107,20 @@ const Chatbox = () => {
         payload: data,
       });
     });
+
+    socket.on('incoming private message', ({content, fromId})=>{
+      console.log('incoming private message');
+      const messageObj = {
+        content,
+        sender: 'client'
+      }
+      dispatch({
+        type: CHAT_BOX_SEND_PRIVATE_MESSAGE,
+        payload: { messageObj, key: fromId}
+      })
+    })
+
+    return () => socket.removeAllListeners();
   }, []);
 
   return (

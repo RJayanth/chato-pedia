@@ -12,17 +12,22 @@ const PrivateChatBody = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    socket.on('incoming private message', ({content, fromId})=>{
-      console.log('incoming private message');
-      const messageObj = {
-        content,
-        sender: 'client'
-      }
-      dispatch({
-        type: CHAT_BOX_SEND_PRIVATE_MESSAGE,
-        payload: { messageObj, key: fromId}
-      })
-    })
+    // socket.on('incoming private message', ({content, fromId})=>{
+    //   console.log('incoming private message');
+    //   const messageObj = {
+    //     content,
+    //     sender: 'client'
+    //   }
+    //   dispatch({
+    //     type: CHAT_BOX_SEND_PRIVATE_MESSAGE,
+    //     payload: { messageObj, key: fromId}
+    //   })
+    // })
+
+    // return () => {
+    //   socket.removeListener('incoming private message');
+    //   // socket.removeAllListeners();
+    // }
   }, [])
   return (
     <div className="private-chat-box-body-container">
