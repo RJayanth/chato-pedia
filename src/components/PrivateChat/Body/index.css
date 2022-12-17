@@ -6,6 +6,10 @@
   flex-direction: column; */
 }
 
+.private-chat-box-body-container * {
+  overflow-anchor: none;
+}
+
 .self-message-pill {
   text-align: left;
   width: -moz-fit-content;
@@ -31,4 +35,9 @@
   padding: 5px;
   border-radius: 10px;
   color: white;
+}
+
+.private-chat-box-message-sibling {
+  overflow-anchor: auto;
+  height: 1px;
 }

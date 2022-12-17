@@ -23,31 +23,29 @@ const PrivateChatBody = () => {
     //     payload: { messageObj, key: fromId}
     //   })
     // })
-
+    
     // return () => {
     //   socket.removeListener('incoming private message');
     //   // socket.removeAllListeners();
     // }
-  }, [])
+  }, []);
   return (
     <div className="private-chat-box-body-container">
       {myChats[selectedUser.id]?.map((message, idx) => {
         return (
-          <>
-            <div
-              key={idx}
-              className={`${
-                message.sender === 'self'
-                  ? 'self-message-pill'
-                  : 'client-message-pill'
-              }`}
-            >
-              {message.content}
-            </div>
-            {/* <div className='client-message-pill'>From client</div> */}
-          </>
+          <div
+            key={idx}
+            className={`${
+              message.sender === 'self'
+                ? 'self-message-pill'
+                : 'client-message-pill'
+            }`}
+          >
+            {message.content}
+          </div>
         );
       })}
+      <div className='private-chat-box-message-sibling'></div>
     </div>
   );
 };
