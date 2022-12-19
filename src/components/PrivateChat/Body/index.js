@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import useChatScroll from '../../../hooks/useChatScroll';
 import { CHAT_BOX_SEND_PRIVATE_MESSAGE } from '../../../redux/actionTypes';
 import socket from '../../../socket';
 import './index.css';
@@ -10,6 +11,8 @@ const PrivateChatBody = () => {
   } = useSelector((state) => state);
 
   const dispatch = useDispatch();
+  const messages = myChats[selectedUser.id];
+  const ref = useChatScroll(messages);
 
   useEffect(() => {
     // socket.on('incoming private message', ({content, fromId})=>{
@@ -30,7 +33,7 @@ const PrivateChatBody = () => {
     // }
   }, []);
   return (
-    <div className="private-chat-box-body-container">
+    <div className="private-chat-box-body-container" ref={ref}>
       {myChats[selectedUser.id]?.map((message, idx) => {
         return (
           <div

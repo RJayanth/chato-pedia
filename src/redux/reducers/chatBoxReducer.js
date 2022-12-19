@@ -75,9 +75,17 @@ const chatBoxReducer = (state = initialState.chatBox, action) => {
       if (!state.myChats[action.payload.key]) {
         state.myChats[action.payload.key] = [];
       }
-      state.myChats[action.payload.key].push(action.payload.messageObj);
+      // state.myChats[action.payload.key].push(action.payload.messageObj);
+      // return { 
+      //   ...state,
+      //   currentlyTypedMessage: ''
+      // };
       return { 
         ...state,
+        myChats: {
+          ...state.myChats,
+          [action.payload.key]: [...state.myChats[action.payload.key], action.payload.messageObj]
+        },
         currentlyTypedMessage: ''
       };
     default:

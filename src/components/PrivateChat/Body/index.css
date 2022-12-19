@@ -6,9 +6,9 @@
   flex-direction: column; */
 }
 
-.private-chat-box-body-container * {
+/* .private-chat-box-body-container * {
   overflow-anchor: none;
-}
+} */
 
 .self-message-pill {
   text-align: left;
@@ -37,7 +37,7 @@
   color: white;
 }
 
-.private-chat-box-message-sibling {
+/* .private-chat-box-message-sibling {
   overflow-anchor: auto;
   height: 1px;
-}
+} */
