@@ -3,7 +3,7 @@ import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
 import './index.css';
 import { debounce } from '../../../helpers';
 import socket from '../../../socket';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useState } from 'react';
 import dotsLoadingColorful from '../../../images/dotsLoadingColorful.gif';
 import dotsLoading from '../../../images/dotsLoading.gif';
@@ -13,6 +13,7 @@ import {
 } from '../../../redux/actionTypes';
 
 const PrivateChatFooter = () => {
+  const inputTextRef = useRef(null);
   const {
     chatBox: { selectedUser, currentlyTypedMessage },
   } = useSelector((state) => state);
@@ -63,6 +64,7 @@ const PrivateChatFooter = () => {
 
   const onSendClick = () => {
     if (currentlyTypedMessage.trim().length) {
+      inputTextRef.current.value = '';
       const messageObj = {
         content: currentlyTypedMessage,
         sender: 'self',
@@ -75,6 +77,13 @@ const PrivateChatFooter = () => {
       socket.emit('private message', { content: messageObj.content, sendToId: selectedUser.id });
     }
   };
+
+  const onKeyUp = (event) => {
+    if(event.keyCode === 13) {
+      // debounce(() => onSendClick(), 500);
+      onSendClick();
+    } 
+  }
 
   return (
     <div className="private-chat-box-footer-container">
@@ -96,6 +105,8 @@ const PrivateChatFooter = () => {
           className="private-chat-box-message-box"
           onClick={onInputClick}
           onChange={onChange}
+          ref={inputTextRef}
+          onKeyUp={onKeyUp}
         />
         <div className="private-chat-box-send-button">
           <SendOutlinedIcon color="primary" disabled onClick={onSendClick} />
