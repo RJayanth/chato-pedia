@@ -23,7 +23,7 @@ const PrivateChatHeader = () => {
     <div className="private-chat-header-container">
       <div className="private-chat-header-left-section">
         <ChevronLeftOutlinedIcon onClick={onBackClick} />
-        <BadgedAvatar imageSrc={avatarCollection[selectedUser.selectedAvatarID]} variant='dot'/>
+        <BadgedAvatar imageSrc={avatarCollection[selectedUser.selectedAvatarID]} variant='dot' variantColor={`${selectedUser.isOnline?'#44b700':'gray'}`}/>
         <div className="private-chat-header-text">{selectedUser.userName}</div>
       </div>
     </div>

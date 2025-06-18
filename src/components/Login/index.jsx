@@ -21,6 +21,7 @@ import { debounce } from '../../helpers';
 import CustomizedSnackbars from '../../commons/snackbar';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Button, TextField } from '@mui/material';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -71,31 +72,17 @@ const Login = () => {
     let gender = '';
     switch (event.target.id) {
       case '0':
-        gender = 'male';
-        break;
-      case '1':
-        gender = 'female';
-        break;
-      case '2':
-        gender = 'female';
-        break;
       case '3':
-        gender = 'male';
-        break;
-      case '4':
-        gender = 'female';
-        break;
       case '5':
-        gender = 'male';
-        break;
       case '6':
-        gender = 'male';
-        break;
       case '7':
         gender = 'male';
         break;
+      case '1':
+      case '2':
+      case '4':
       case '8':
-        gender = 'fmale';
+        gender = 'female';
         break;
       default:
         gender = 'male';
@@ -103,15 +90,16 @@ const Login = () => {
     }
     dispatch({
       type: AVATAR_CLICK,
-      payload: { id: parseInt(event.target.id), gender },
+      payload: { id: parseInt(event?.target?.id), gender },
     });
   };
 
   return (
-    <div className='login-container'>
-      <div className='avatar-section-container'>
-        <div className='avatar-icons-container'>
-          {avatarCollection.map((item, idx) => {
+    <div className="login-container">
+      <div className="avatar-section-container">
+        <div className="avatar-label">Choose your avatar!</div>
+        <div className="avatar-icons-container">
+          {avatarCollection?.map((item, idx) => {
             return (
               <div
                 className={`avatar-icon ${
@@ -121,7 +109,7 @@ const Login = () => {
               >
                 <img
                   src={item}
-                  className='avatar'
+                  className="avatar"
                   key={idx}
                   onClick={avatarSelectionHandler}
                   id={idx}
@@ -130,19 +118,33 @@ const Login = () => {
             );
           })}
         </div>
-        <div className='avatar-label'>Choose your avatar...</div>
       </div>
 
-      <div className='login-form-container'>
-        <input
-          type='text'
+      <div className="login-form-container">
+        <TextField
+          className="login-input"
+          label="Enter your name"
+          onChange={onChange}
+          error={showAlert}
+        />
+        {/* <input
+          type="text"
           className={`${
             showAlert ? 'input-text-box-invalid' : 'input-text-box'
           }`}
-          placeholder='Your name here...'
+          placeholder="Your name here..."
           onChange={onChange}
-        ></input>
-        <button
+        ></input> */}
+        <Button
+          className="login-button"
+          variant="contained"
+          disabled={!isLoginEnabled}
+          onClick={loginClickHandler}
+        >
+          {' '}
+          Login{' '}
+        </Button>
+        {/* <button
           className={`${
             isLoginEnabled ? 'login-button' : 'login-button-disabled'
           }`}
@@ -150,7 +152,7 @@ const Login = () => {
           onClick={loginClickHandler}
         >
           Proceed
-        </button>
+        </button> */}
       </div>
 
       {showAlert ? (

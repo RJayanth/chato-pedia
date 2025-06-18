@@ -18,7 +18,7 @@ const initialState = {
     previousSelectedView: null,
     selectedView: CHAT_BOX.USERS_HUB,
     loggedInUserDetails: {},
-    usersList: [],
+    usersList: {},
     selectedUser: {},
     isKeyboardActive: false,
     currentlyTypedMessage: ''

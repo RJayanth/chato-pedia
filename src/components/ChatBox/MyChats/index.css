@@ -1,0 +1,18 @@
+.my-chats-container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+.user-container {
+    display: flex;
+    padding: 5px;
+    border-bottom: 1px solid gainsboro;
+    justify-content: space-between;
+}
+.user-row-left-panel {
+    display: flex;
+}
+.user-details-container {
+    margin-left: 5px;
+}

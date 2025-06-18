@@ -4,10 +4,12 @@ import Badge from '@mui/material/Badge';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 
-const StyledBadge = styled(Badge)(({ theme }) => ({
+const StyledBadge = styled(Badge)(({ theme, color }) => ({
   '& .MuiBadge-badge': {
     backgroundColor: '#44b700',
     color: '#44b700',
+    // color: color,
+    // backgroundColor: color,
     boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
     '&::after': {
       position: 'absolute',
@@ -39,13 +41,16 @@ const SmallAvatar = styled(Avatar)(({ theme }) => ({
   border: `2px solid ${theme.palette.background.paper}`,
 }));
 
-const BadgedAvatar = ({imageSrc, variant}) => {
+const BadgedAvatar = ({imageSrc, variant, variantColor}) => {
   return (
     <Stack direction="row" spacing={2}>
       <StyledBadge
         overlap="circular"
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         variant={variant}
+        //variantColor={variantColor}
+        // color={variantColor}
+        // sx={variantColor && {backgroundColor: variantColor, color: variantColor}}
       >
         <Avatar alt="Remy Sharp" src={imageSrc} />
       </StyledBadge>

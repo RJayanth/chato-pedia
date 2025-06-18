@@ -5,7 +5,6 @@ import { CHAT_BOX } from '../../constants';
 import UsersHub from './UsersHub';
 import MyChats from './MyChats';
 import Filters from './Filters';
-import socketIO from 'socket.io-client';
 import { useEffect } from 'react';
 import socket from '../../socket';
 import {
@@ -72,6 +71,7 @@ const Chatbox = () => {
       userName,
       gender,
       selectedAvatarID,
+      isOnline: true,
     };
     socket.auth = { userDetails };
     socket.connect();
@@ -86,7 +86,7 @@ const Chatbox = () => {
       });
     });
 
-    socket.on('users list', (data) => {
+    socket.on('initial users list', (data) => {
       console.log('users - ', data);
       dispatch({
         type: CHAT_BOX_USERS_LIST_UPDATE,
@@ -108,24 +108,28 @@ const Chatbox = () => {
       });
     });
 
-    socket.on('incoming private message', ({content, fromId})=>{
+    socket.on('incoming private message', ({ content, fromId }) => {
       console.log('incoming private message');
       const messageObj = {
         content,
-        sender: 'client'
-      }
+        sender: 'client',
+      };
       dispatch({
         type: CHAT_BOX_SEND_PRIVATE_MESSAGE,
-        payload: { messageObj, key: fromId}
-      })
-    })
+        payload: { messageObj, key: fromId },
+      });
+    });
 
     return () => socket.removeAllListeners();
   }, []);
 
   return (
     // <div className="chatbox-container d-flex">
-    <div className={`${isKeyboardActive ? 'chatbox-container-reduced' : 'chatbox-container'} 'd-flex d-md-none'`}>
+    <div
+      className={`${
+        isKeyboardActive ? 'chatbox-container-reduced' : 'chatbox-container'
+      } 'd-flex d-md-none'`}
+    >
       {selectedView === CHAT_BOX.PRIVATE_CHAT ? (
         <PrivateChat />
       ) : (
@@ -134,7 +138,7 @@ const Chatbox = () => {
             <div className="chatbox-header-text">{selectedView}</div>
             {/* {selectedView === CHAT_BOX.USERS_HUB && <UsersHubHeader />} */}
           </div>
-          <div className="chatbox-body">
+          {/* <div className="chatbox-body">
             {selectedView === CHAT_BOX.USERS_HUB ? (
               <UsersHub />
             ) : selectedView === CHAT_BOX.MY_CHATS ? (
@@ -142,7 +146,7 @@ const Chatbox = () => {
             ) : (
               <Filters />
             )}
-          </div>
+          </div> */}
           <div className="chatbox-footer-container">
             <Toolbar />
           </div>{' '}

@@ -21,6 +21,7 @@ const chatBoxReducer = (state = initialState.chatBox, action) => {
       return {
         ...state,
         selectedView: action.payload,
+        selectedUser: {},
       };
     case CHAT_BOX_LOGGED_IN_USER_DETAILS_UPDATE:
       return {
@@ -29,9 +30,19 @@ const chatBoxReducer = (state = initialState.chatBox, action) => {
       };
 
     case CHAT_BOX_USERS_LIST_UPDATE:
+      if (!state.usersList[action.payload.key]) {
+        state.usersList[action.payload.key] = {};
+      }
       return {
         ...state,
-        usersList: [...action.payload],
+        usersList: {
+          ...state.usersList,
+          [action.payload.key]: {
+            ...state.usersList[action.payload.key],
+            
+          },
+      }
+        // usersList: [...action.payload],
       };
 
     case CHAT_BOX_NEW_USER_ADDED:
@@ -46,9 +57,17 @@ const chatBoxReducer = (state = initialState.chatBox, action) => {
         (user) => user.id === action.payload
       );
       usersListTemp.splice(index, 1);
+      const selectedUser =
+        action.payload === state.selectedUser.id
+          ? {
+              ...state.selectedUser,
+              isOnline: false,
+            }
+          : { ...state.selectedUser };
       return {
         ...state,
         usersList: usersListTemp,
+        selectedUser,
       };
 
     case CHAT_BOX_USER_ROW_SELECT:
@@ -76,17 +95,20 @@ const chatBoxReducer = (state = initialState.chatBox, action) => {
         state.myChats[action.payload.key] = [];
       }
       // state.myChats[action.payload.key].push(action.payload.messageObj);
-      // return { 
+      // return {
       //   ...state,
       //   currentlyTypedMessage: ''
       // };
-      return { 
+      return {
         ...state,
         myChats: {
           ...state.myChats,
-          [action.payload.key]: [...state.myChats[action.payload.key], action.payload.messageObj]
+          [action.payload.key]: [
+            ...state.myChats[action.payload.key],
+            action.payload.messageObj,
+          ],
         },
-        currentlyTypedMessage: ''
+        currentlyTypedMessage: '',
       };
     default:
       return state;
