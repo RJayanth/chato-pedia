@@ -136,7 +136,7 @@ const Chatbox = () => {
         <>
           <div className="chatbox-header">
             <div className="chatbox-header-text">{selectedView}</div>
-            {/* {selectedView === CHAT_BOX.USERS_HUB && <UsersHubHeader />} */}
+            {selectedView === CHAT_BOX.USERS_HUB && <UsersHubHeader />}
           </div>
           {/* <div className="chatbox-body">
             {selectedView === CHAT_BOX.USERS_HUB ? (
